@@ -1,0 +1,164 @@
+\section{Theoretical Analysis}
+\label{sec:analysis}
+
+In this section, the circuit shown in Figure~\ref{fig:circuit} is analysed theoretically, using both mesh and node methods.
+
+\subsection{Mesh Method}
+
+Starting with the mesh method, we considered four meshes and labeled them with a capital letter. The current that flows in each mesh is represented by the letter $I$ followed by the letter that was previously given (see fig.~\ref{fig:circuit}). Once we find the values of the currents that flow in the four meshes we can determine all the unknowns, such as the current in every branch and the tension in every node, using Ohm’s Law:
+
+\begin{equation}
+  V= R*I.
+  \label{eq:ohm_law}
+\end{equation}
+
+For the analysis based on the mesh method, we decided to use Kirchhoff’s Voltage Law (KVL) in the two meshes that have no current sources, which means, in meshes A and C, because it diminishes the complexity of the problem. Since we had four unknowns, we needed four equations, so we added two new equations based on a previous analysis of the circuit. Given that, we obtained the four equations, each one related to a mesh.
+
+Mesh A:
+\begin{equation}
+  R1*I_A + R3*(I_A-I_B) + R4*(I_A-I_C) = Va.
+  \label{eq:mesh_a}
+\end{equation}
+
+Mesh B:
+\begin{equation}
+  I_B = -Kb*(I_A-I_B)*R3.
+  \label{eq:mesh_b}
+\end{equation}
+
+Mesh C:
+\begin{equation}
+  Vc + R7*I_C + R6*I_C + R4*(I_C-I_A) = 0.
+  \label{eq:mesh_c}
+\end{equation}
+
+Mesh D:
+\begin{equation}
+  I_D = -Id.
+  \label{eq:mesh_d}
+\end{equation}
+
+Then we transformed the equations above in a linear system to be solved in $Octave$ maths tool. Solving the systems of linear equations, we calculated the vector ($I_A,I_B,I_C,I_D$). Then with these values for the current and the following relations using Ohm’s Law (Eq.~\ref{eq:ohm_law}), the unknowns were fully determined.
+
+\begin{equation}
+  V1 = Va.
+  \label{eq:v1}
+\end{equation}
+
+\begin{equation}
+  V2 = V1 - (R1*I_A).
+  \label{eq:v2}
+\end{equation}
+
+\begin{equation}
+  V3 = V2 - (I_B*R2).
+  \label{eq:v3}
+\end{equation}
+
+\begin{equation}
+  V4 = V2 - (I_A-I_B)*R3.
+  \label{eq:v4}
+\end{equation}
+
+\begin{equation}
+  V5 = V4 - (I_D-I_B)*R5.
+  \label{eq:v5}
+\end{equation}
+
+\begin{equation}
+  V6 = I_C*R6.
+  \label{eq:v6}
+\end{equation}
+
+\begin{equation}
+  V7 = V6 + (I_C*R7).
+  \label{eq:v7}
+\end{equation}
+
+The current in each branch was calculated using the conductance and the same relations as before.
+
+\subsection{Node Method}
+
+With this method, we labelled every node with a number (see fig.~\ref{fig:circuit}). Starting with node 1, with use of $V0=0$ (GND) and Kirchhoff’s Current Law(KCL), we determined the voltage in each node (seven unknown nodal voltages). From one node to the next one we applied KCL and the given relations in the circuit shown in the introduction to calculate. We only considered the nodes that do not connect to voltage sources because, as stated before, it decreases the complexity of the problem. Once we knew all the nodal voltages, we could determine everything in the circuit.
+
+In this section we needed seven equations to determine the voltages, so we considered equations related to some nodes and added more equations derived from the analysis of the circuit. Just like we did for the mesh method, we then solved this system of linear equations using matrixes and $Octave$. The result was the vector (V1,V2,V3,V4,V5,V6,V7). Finally, using Ohm’s Law shown in subsection 2.1 and a previous analysis, we determined the current in every branch and the values for Vb, Ib, Vc and Ic (see fig.~\ref{fig:circuit}).
+
+
+\begin{equation}
+  V1 = Va.
+  \label{eq:vn1}
+\end{equation}
+
+\begin{equation}
+  -G1*V1 + (G1+G2+G3)*V2 - G2*V3 - G3*V4 = 0.
+  \label{eq:n2}
+\end{equation}
+
+\begin{equation}
+  (-G2-Kb)*V2 + G2*V3 + Kb*V4 = 0.
+  \label{eq:n3}
+\end{equation}
+
+\begin{equation}
+  Kb*V2 + (-G5-Kb)*V4 + G5*V5 = Id.
+  \label{eq:n4}
+\end{equation}
+
+\begin{equation}
+  (G6 + G7)*V6 - G7*V7 = 0.
+  \label{eq:n5}
+\end{equation}
+
+\begin{equation}
+  V4 + G6*Kc*V6 - V7 = 0.
+  \label{eq:n6}
+\end{equation}
+
+\begin{equation}
+  -G3*V2 + (G3+G4+G5)*V4 - G5*V5 - G7*V6 + G7*V7 = -Id.
+  \label{eq:n7}
+\end{equation}
+
+
+
+\subsection{Results}
+
+After the calculations using both methods, we obtained the following values (voltage is measured in V and Current is measured in A) :
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Mesh Method Value}\\ \hline
+    \input{../mat/rm_tab}
+  \end{tabular}
+  \caption{Node voltages and Current in branches [A or V] using the Mesh Method. Negative values mean opposite direction to indicated in Figure~\ref{fig:circuit}.}
+  \label{tab:rm}
+\end{table}
+
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Node Method Value}\\ \hline
+    \input{../mat/rn_tab}
+  \end{tabular}
+  \caption{Node voltages and Current in branches [A or V] using the Node Method. Negative values mean opposite direction to indicated in Figure~\ref{fig:circuit}.}
+  \label{tab:rn}
+\end{table}
+
+
+Analysing the results seen in Tables ~\ref{tab:rm} and ~\ref{tab:rn}  and comparing the values, we conclude that both methods give us remarkably similar values, so the calculations match each other. This result was expected, since both methods are valid and can be applied to the analysis of the given circuit. 
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+\section{Simulation Analysis}
+\label{sec:simulation}
+
+The following subsections present the obtained results when simulating the circuit and a comparison between the theoretical and simulated values.
+
+\subsection{Simulated Results}
+
+To determine whether we can or cannot rely on these methods, we simulated the given circuit using Ngspice. Table~\ref{tab:sr}  shows the obtained values in the simulation for current and voltage.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/sr_tab}
+  \end{tabular}
+  \caption{Node voltages and Current in branches. Names preceeded by "@" refer to current and values are measured in A.}
+  \label{tab:sr}
+\end{table}
+
+
+\subsection{Overall Results}
+
+Comparing the theoretical and simulated results, one notices the values are very similar and in line with what was expected. Small diferences were noticed due to the approximations made in the calculations using $Octave$ tool.
+
+Closely observing the differences between the simulated and theoretical results, the maximum relative error obtained in this assignment was aroud 0,0009percent , which is a remarkably small value.
+
+\vspace{10cm}
