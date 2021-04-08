@@ -11,8 +11,9 @@ all: python
 	make -C sim
 	make -C doc
 	cp doc/report2.pdf .
+	
 python:
-	python2 t2_datagen.py 95775 > mat/data.txt
+	python t2_datagen.py 95769 > mat/data.txt
 
 clean:
 	make -C mat clean

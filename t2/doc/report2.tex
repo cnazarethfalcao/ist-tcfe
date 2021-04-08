@@ -1,17 +1,23 @@
+
+% ----------------------------------------------------------------------
+%  Set the document class
+% ----------------------------------------------------------------------
 \documentclass[11pt,a4paper,twoside]{article}
 
 % ----------------------------------------------------------------------
 % Define external packages, language, margins, fonts and new commands
 % ----------------------------------------------------------------------
 %\input{preamble} 
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel} 
+\usepackage[utf8]{inputenc}   % <<<<< Linux
+\usepackage[english]{babel} % <<<<< English
 \usepackage{notoccite}
 \usepackage[skip=0.5\baselineskip]{caption}
 \hyphenation{GTKWave}
 \usepackage{listings}
 \usepackage[all]{nowidow}
 
+%blind text
+\usepackage{lipsum}
 
 \usepackage{graphicx}
 \graphicspath{{./}{../../figlib/}{../mat/}{../sim/}}
@@ -26,7 +32,7 @@
 \def\FontSn{% 12 pt normal
   \usefont{T1}{phv}{m}{n}\fontsize{12pt}{12pt}\selectfont}
 
-%Use Arial font as default
+% Use Arial font as default
 %
 \renewcommand{\rmdefault}{phv}
 \renewcommand{\sfdefault}{phv}
@@ -74,12 +80,36 @@
 
 \begin{document}
 
-
+% Set plain page style (no headers, footer with centered page number)
 \pagestyle{plain}
 
+% Set roman numbering (i,ii,...) before the start of chapters
+%\pagenumbering{roman}
 
+% ----------------------------------------------------------------------
+%  Cover page
+% ----------------------------------------------------------------------
 \input{frontcover}
 
+% ----------------------------------------------------------------------
+% Dedication page (optional)
+% ----------------------------------------------------------------------
+%\input{dedication} 
+%\cleardoublepage
+
+% ----------------------------------------------------------------------
+%  Acknowledgments (optional)
+% ----------------------------------------------------------------------
+%\input{acknowledgements}
+%\cleardoublepage
+
+% ----------------------------------------------------------------------
+%  Abstract (both in English and Portuguese)
+% ----------------------------------------------------------------------
+%\input{resumo} 
+%\cleardoublepage
+
+%\input{abstract} 
 
 % ----------------------------------------------------------------------
 %  Table of contents, list of tables, list of figures and nomenclature
@@ -110,7 +140,6 @@
 
 \input{intro}
 
-
 \input{analysis}
 
 \input{simulation}
@@ -118,5 +147,13 @@
 \input{conclusion}
 %\cleardoublepage
 
+% ----------------------------------------------------------------------
+%  Bibliography
+% ----------------------------------------------------------------------
+%\addcontentsline{toc}{section}{\bibname}
+%\bibliographystyle{abbrvunsrtnat} % <<<<< SELECT IF USING REFERENCES BY NUMBER (CITATION ORDER)
+%\bibliography{../../../BIBfile.bib}
 
+% ----------------------------------------------------------------------
 \end{document}
+% ----------------------------------------------------------------------

@@ -1,20 +1,19 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
 
-In this section, the circuit shown in Figure~\ref{fig:circuit} is analysed theoretically. The following subsections correspond to the answers to the respective given exercises. 
+In this section, the circuit shown in Figure ~\ref{fig:circuit} is analysed theoretically. The following subsections correspond to the answers to the respective given exercises. 
 
 \subsection{Task 1}
 
 In this exercise, voltage soure $V_{S}$ is constant and it is assumed that the capacitor is constant too, which means that current $I_{c}$ is null.
-Starting by calculating the voltages in evry node, we can then determine the currents in every branch using $Ohm's Law$ ~\ref{eq:ohm_law} 
+Starting by calculating the voltages in evry node, we can then determine the currents in every branch using Ohm's Law (~\ref{eq:ohm_law}). 
 
 \begin{equation}
   V= R*I.
   \label{eq:ohm_law}
 \end{equation}
 
-
-To calculate de voltages in every node, we labelled them with a number (see fig. ~\ref{fig:circuit}). From one node to the next one we applied KCL and the given relations in the circuit shown in the introduction to calculate the seven unknown nodal voltages. We only considered nodes that do not connect to voltage sources because it decreases the complexity of the problem. 
+To calculate de voltages in every node, we labelled them with a number (see fig.~\ref{fig:circuit}). From one node to the next one we applied KCL and the given relations in the circuit shown in the introduction to calculate the seven unknown nodal voltages. We only considered nodes that do not connect to voltage sources because it decreases the complexity of the problem. 
 To solve the voltages in every node and current in every branch, all the unknown currents used in the node analysis were considered to be diverging from the node. Once all the nodal voltages were calculated, everything in the circuit could be determined.
 
 In this section we needed seven equations to determine the voltages, so we considered equations related to some nodes and added more equations derived from the analysis of the circuit. In this case, we recurred to another equation using a value $Iaux$, which is the current in the voltage source $Vd$, and an additional equation to determine de seven nodal voltages and the value of $Iaux$. Voltage in node 4 was also considered to be zero because it is connected to the ground(GND). We then solved this system of linear equations using matrixes and $Octave$. The result was the vector (V1,V2,V3,V5,V6,V7,V8,Ix). Finally, using Ohm’s Law shown in subsection 2.1 and a previous analysis, we determined the current in every branch and the values for Vb, Ib, Vc, Vd and Id (see fig.~\ref{fig:circuit}).
@@ -75,9 +74,10 @@ These equations were computed into a matrix and solved in $Octave$ as refered be
   \label{tab:r1}
 \end{table}
 
+\newpage
 
 \subsection{Task 2}
-In this subsection, we consider until t=0, an infinite time has passed and so the capacitor is fully charged. This capacitor now functions as a voltage source $Vx$ given by the expression \ref{eq:v_2} as sugested. We now have a null value for $Vs$, which means it can be ignored and nodes 1 and 4 can be considered as the same, so $V1=V4=0$(GND).
+In this subsection, we consider until t=0, an infinite time has passed and so the capacitor is fully charged. This capacitor now functions as a voltage source $Vx$ given by the expression(\ref{eq:v_2}) as sugested. We now have a null value for $Vs$, which means it can be ignored and nodes 1 and 4 can be considered as the same, so $V1=V4=0$(GND).
 
 \begin{equation}
   Vx = V6 - V8.
@@ -154,9 +154,11 @@ The results are given in the next Table:
     {\bf Name} & {\bf Voltage/Current Value}\\ \hline
     \input{../mat/f2_tab}
   \end{tabular}
-  \caption{Node voltages and Current in branches [A or V], $Req$ and $Time Constant$.}
+  \caption{Node voltages and Current in branches [A or V], $Req$ and $Time Constant(TC)$.}
   \label{tab:r2}
 \end{table}
+
+\newpage
 
 \subsection{Task 3}
 
@@ -166,7 +168,7 @@ The results are given in the next Table:
   \label{eq:v6n}
 \end{equation}
 
-\par As sugested, we used the capacitor voltage $Vx$ for t<0 as the initial condition. Since there is continuity, and $V6 = Vx + V8$, we have:
+\par As sugested, we used the capacitor voltage $Vx$ for $t<0$ as the initial condition. Since there is continuity, and $V6 = Vx + V8$, we have:
 
 \begin{equation}
   V_{6n}(0) = A = V6 = Vx + V8.
@@ -182,14 +184,16 @@ The results are given in the next Table:
 \par We now have the natural solution in fuction of time for V6. With these results we were able to plot this function, as we can see in Figure \ref{fig:g_3}.
 
 \begin{figure}[h] \centering
- \caption{Natural solution of V6(t) in the interval [0,20]ms}
- \includegraphics[width=0.8\linewidth]{natural_solution.eps}
- \label{fig:g_3}
+\includegraphics[width=0.8\linewidth]{natural_solution.eps}
+\caption{Natural solution of V6(t) in the interval [0,20]ms.}
+\label{fig:g_3}
 \end{figure}
+ 
+ \newpage
  
 \subsection{Task 4}
 
-\par In this step, the objective is to determine the forced solution for t>0. We now have a frequency of $f = 1KHz$, and the phasor voltage source $Vs$. The capacitor no loger functions as a voltage source. For this time interval, $Vs$ is a sinusoidal fuction of time, given by:
+\par In this step, the objective is to determine the forced solution for $t>0$. We now have a frequency of $f = 1KHz$, and the phasor voltage source $Vs$. The capacitor no loger functions as a voltage source. For this time interval, $Vs$ is a sinusoidal fuction of time, given by:
 
 \begin{equation}
   Vs(t) = sin(wt).
@@ -205,7 +209,7 @@ The results are given in the next Table:
   Vc = Ic*Zc.
 \end{equation}
 
-\par Similar to before, we produced a complex node analysis (Task 1) to determine the voltage in every node. Many of the equations used in this step were derived from Task 1 (\ref{eq:n1},\ref{eq:n2},\ref{eq:n3},\ref{eq:n5},\ref{eq:n6}) and two other additional equations were added. This culminated in a matrix, that was then solved using $Octave$ maths tool.
+\par Similar to before, we produced a complex node analysis (Task 1) to determine the voltage in every node. Many of the equations used in this step were derived from Task 1 (\ref{eq:n1},\ref{eq:n3},\ref{eq:n3},\ref{eq:n5},\ref{eq:n6}) and two other additional equations were added. This culminated in a matrix, that was then solved using $Octave$ maths tool.
 
 \begin{equation}
  (V1 - V2)*G1 - G7*V5 - G6*V7 = 0.
@@ -215,33 +219,20 @@ The results are given in the next Table:
  (V6 - V5)*G5 + (V6 - V8)*Yc + (V2 - V5)*Kb = 0.
 \end{equation}
 
-\par The results are given in Table \ref{table:t4}
-\begin{table}[!ht]
-	\centering
-	\begin{tabular}{ |c|c| }
-	\hline
-	 {\bf Node} & {\bf Complex amplitude} \\ 
-	 \hline\hline
-	 $V1$ & $(\partialinput{1}{1}{f4.tex})*exp(j*\partialinput{8}{8}{f4.tex})$   \\
-	 \hline
-	 $V2$ & $(\partialinput{2}{2}{f4.tex})*exp(j*\partialinput{9}{9}{f4.tex})$   \\
-	 \hline
-	 $V3$ & $(\partialinput{3}{3}{f4.tex})*exp(j*\partialinput{10}{10}{f4.tex})$   \\
-	 \hline
-	 $V5$ & $(\partialinput{4}{4}{f4.tex})*exp(j*\partialinput{11}{11}{f4.tex})$   \\
-	 \hline
-	 $V6$ & $(\partialinput{5}{5}{f4.tex})*exp(j*\partialinput{12}{12}{f4.tex})$   \\
-	 \hline
-	 $V7$ & $(\partialinput{6}{6}{f4.tex})*exp(j*\partialinput{13}{13}{f4.tex})$   \\
-	 \hline
-	 $V8$ & $(\partialinput{7}{7}{f4.tex})*exp(j*\partialinput{14}{14}{f4.tex})$   \\
-	 \hline
-	\end{tabular}
-	\caption{Complex node analysis}
-	\label{table:t4}
-\end{table} 
- 
-With this information, we can write: $V_{6t}(t)=($\partialinput{15}{15}{f4.tex}$)*sin(2*pi*1000*t)$ .
+\par The results are given in Table \ref{tab:t4} :
+
+ \begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Amplitude} \\ \hline
+    \input{../mat/f4_tab}
+  \end{tabular}
+  \caption{Complex analysis. Amplitude for each node.}
+  \label{tab:t4}
+\end{table}
+
+\newpage
 
 \subsection{Task 5}
 In this task, to plot the graphic of the total solution, we simply summed the solutions obtained in tasks 3 and 4 (for t>=0) and used the values from task 1 when (t<0):
@@ -253,27 +244,32 @@ In this task, to plot the graphic of the total solution, we simply summed the so
 \par The plotted fuction can be seen in Figure \ref{fig:g5}.
 
 \begin{figure}[h] \centering
- \caption{Total solution of V_{6}(t) in the interval [-5,20]ms}
- \includegraphics[width=0.8\linewidth]{tsol.eps}
- \label{fig:g5}
+\includegraphics[width=0.8\linewidth]{tsol.eps}
+\caption{Total solution of V6(t) in the interval [-5,20]ms.}
+\label{fig:g5}
 \end{figure}
 
-\par These results were expected, since Vs is a voltage source and has no frequency response. Contrary, it was also expected V_{6t}(t) had a frequency response, since it depends on the voltage source. The results in the figure match the predictions.
+\par These results were expected, since Vs is a voltage source and has no frequency response. Contrary, it was also expected $V6t(t)$ had a frequency response, since it depends on the voltage source. The results in the figure match the predictions.
+
+\newpage
 
 \subsection{Task 6}
-\par In this subsection the objective was to observe the frequency responses of $Vc$ and $V_{6}$. In order to do so we did a symilar analysis to task 4 but with a frequency vector. The values for the magnitude and phase were plotted using $Octave$. We can see the results in figures \ref{fig:g6_1} and \ref{fig:g6_2}
+\par In this subsection the objective was to observe the frequency responses of $Vc$ and $V6$. In order to do so we did a symilar analysis to task 4 but with a frequency vector. The values for the magnitude and phase were plotted using $Octave$. We can see the results in figures \ref{fig:g6_1} and  \ref{fig:g6_2}
 
-\begin{figure}[!ht] \centering
- \caption{Magnitude response of Vs, V_{6} and Vc [dB]}
- \includegraphics[width=0.8\linewidth]{magnitude.eps}
- \label{fig:g6_1}
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.8\linewidth]{magnitude.eps}
+\caption{Magnitude response of Vs, V6 and Vc [dB].}
+\label{fig:g6_1}
 \end{figure}
 
-\begin{figure}[!ht] \centering
- \caption{Angle response of Vs, V_{6} and Vc [degrees]}
- \includegraphics[width=0.8\linewidth]{phase.eps}
- \label{fig:g6_2}
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.8\linewidth]{phase.eps}
+\caption{Angle response of Vs, V6 and Vc [degrees].}
+\label{fig:g6_2}
 \end{figure}
 
-\par Looking at the plotted results, one can confirm that they match the expectations. Since we have a simple RC circuit and $Vs = 1$, we know that $Vc$ follow an inverse relation with frequency which leads us to conclude that when frequency increases, $Vc$ must decrease. Once $V8$ is a frequency independent value, one notices that V_{6} must follow the same dependence, just as we have seen in both figures.
+\par Looking at the plotted results, one can confirm that they match the expectations. Since we have a simple RC circuit and $Vs = 1$, we know that $Vc$ follow an inverse relation with frequency which leads us to conclude that when frequency increases, $Vc$ must decrease. Once $V8$ is a frequency independent value, one notices that $V6$ must follow the same dependence, just as we have seen in both figures.
 
+\newpage

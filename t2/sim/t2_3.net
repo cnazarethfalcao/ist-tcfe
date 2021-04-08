@@ -25,8 +25,8 @@ echo "********************************************"
 
 tran 1e-5 20e-3
 
-hardcopy graf_1.ps v(6)
-echo graf_1
+hardcopy t2_3.ps v(6)
+echo t2_3_FIG
 
 quit
 .endc

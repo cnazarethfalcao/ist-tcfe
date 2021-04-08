@@ -1,0 +1,38 @@
+
+Circuit: .options savecurrents
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: v1: no DC value, transient time 0 value used
+
+No. of Data Rows : 1
+********************************************
+Transient analysis
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: v1: no DC value, transient time 0 value used
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+2                                 -5.64999e-13
+1                                            0
+3                                 -1.75426e-12
+5                                 -4.84947e-13
+6                                      8.67274
+n001                                         0
+7                                  1.86728e-13
+8                                  2.82516e-13
+h1#branch                           0.00282516
+v2#branch                         -9.20421e-17
+v1#branch                         -5.52284e-16
+
+
+No. of Data Rows : 2008
+
+The file "t2_4.ps" may be printed on a postscript printer.
+t2_4_FIG
+ngspice-31 done

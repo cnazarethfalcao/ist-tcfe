@@ -172,7 +172,7 @@ f2=fopen("f2_tab.tex","w")
 fprintf(f2,"$Vx$ & %e \\\\ \\hline \n",Vx);
 fprintf(f2,"$Ix$ & %e \\\\ \\hline \n",Ix);
 fprintf(f2,"$Req$ & %e \\\\ \\hline \n",Req);
-fprintf(f2,"$Time Constant$ & %e \\\\ \\hline \n",tc);
+fprintf(f2,"$TC$ & %e \\\\ \\hline \n",tc);
 fprintf(f2,"$V1$ & %e \\\\ \\hline \n",V1_2);
 fprintf(f2,"$V2$ & %e \\\\ \\hline \n",V2_2);
 fprintf(f2,"$V3$ & %e \\\\ \\hline \n",V3_2);
@@ -281,7 +281,15 @@ V8_i=imag(V8_4)
 V8_a=sqrt((V8_r*V8_r)+(V8_i*V8_i))
 V8_ph=atan(V8_i/V8_r)
 
-save("-ascii","../doc/f4.tex", "V1_a", "V2_a", "V3_A", "V5_A", "V6_a", "V7_a", "V8_a", "V1_ph", "V2_ph", "V3_ph", "V5_ph", "V6_ph", "V7_ph", "V8_ph","V6_r");
+f4=fopen("f4_tab.tex","w")
+fprintf(f4,"$V1$ & %e \\\\ \\hline \n",V1_a);
+fprintf(f4,"$V2$ & %e \\\\ \\hline \n",V2_a);
+fprintf(f4,"$V3$ & %e \\\\ \\hline \n",V3_a);
+fprintf(f4,"$V5$ & %e \\\\ \\hline \n",V5_a);
+fprintf(f4,"$V6$ & %e \\\\ \\hline \n",V6_a);
+fprintf(f4,"$V7$ & %e \\\\ \\hline \n",V7_a);
+fprintf(f4,"$V8$ & %e \\\\ \\hline \n",V8_a);
+fclose(f4)
 
 
 % ------------------------ 5 ------------------------%

@@ -3,7 +3,6 @@
 # ---------------------------------------------------------
 
 #doc name
-
 FILE=report2
 
 #list of LibreOffice Draw files
@@ -13,7 +12,7 @@ all: $(FILE).pdf
 	evince $< &
 
 $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
-	export TEXINPUTS=$(TEXINPUTS)
+	cp -f ../mat/*.eps .
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
@@ -22,11 +21,9 @@ $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
 #convert libreoffice draw figures to pdf
 %.pdf: %.odg
 	soffice --headless --convert-to pdf $<
-
+	
 clean:
 	@rm -rf *.aux *.bbl *.blg *.glg *.glo *.gls *.ilg *.ist *.lof
 	@rm -rf *.log *.lot *.nlo *.nls *.out *.toc *~ *.*% ./*.pdf ./*.eps
 
 .PHONY: all clean
-
-

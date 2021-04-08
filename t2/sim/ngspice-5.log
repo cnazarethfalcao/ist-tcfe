@@ -1,0 +1,23 @@
+
+Circuit: 
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: v1: has no value, DC 0 assumed
+
+No. of Data Rows : 1
+********************************************
+"FREQUENCY ANALYSIS"-QUESTION 5
+********************************************
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: v1: has no value, DC 0 assumed
+
+No. of Data Rows : 901
+
+The file "t2_51.ps" may be printed on a postscript printer.
+t2_51_FIG
+
+The file "t2_52.ps" may be printed on a postscript printer.
+t2_52_FIG
+ngspice-31 done
