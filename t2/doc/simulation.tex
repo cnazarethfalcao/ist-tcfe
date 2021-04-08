@@ -1,0 +1,118 @@
+\section{Simulation Analysis}
+\label{sec:simulation}
+
+The following subsections present the obtained results when simulating the circuit using $Ngspice$.
+
+\subsection{Task 1}
+
+Table \ref{tab:sr_1} shows the simulated operating point results when t<0.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/t2_1_tab}
+  \end{tabular}
+  \caption{Node voltages and Current in branches. Names preceeded by "@" refer to current and values are measured in A.}
+  \label{tab:sr_1}
+\end{table}
+
+\subsection{Task 2}
+In this subsection, an operating point analysis was made with Vs = 0 and replacing the capacitor with a voltage source, whose value derives from Vc = V6 - V8. These nodal voltages were the ones obtained in the previous task. The results can be seen in Table \ref{tab:sr_2}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value [A or V]} \\ \hline
+    \input{../sim/t2_2_tab}
+  \end{tabular}
+  \caption{Node voltages and Current in branches. Names preceeded by "@" refer to current and values are measured in A.}
+  \label{tab:sr_2}
+\end{table}
+
+\subsection{Task 3}
+Task 3 shows the natural response of the circuit when t=[0,20]ms. With use of previous values for $V6$ and $V8$, a transient analysis was made and the results for the natural response are shown in Figure\ref{fig:sr_3}.
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{graph_1.pdf}
+\caption{Natural Solution of $V6$}
+\label{fig:sr_3}
+\end{figure}
+
+\subsection{Task 4}
+As stated in the theorethical analysis, the total response of the circuit is the sum of natural and forced solutions. Considering $Vs$ a sinusoidal voltage source and $f = 1kHz$, we have Figure \ref{fig:sr_4} of the results for $V_{6}$ and $Vs$.
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{graph_1.pdf}
+\caption{Total solution of $V6$ and $Vs$}
+\label{fig:sr_4}
+\end{figure}
+
+\subsection{Task 5}
+In this subsection, a simulated frequency response was made. Figures \ref{fig:sr_5_1} and \ref{fig:sr_5_2} show the plotted results for the magnitude and phase of the frequency responses for $Vc$, $Vs$ and $V_{6}$.
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{graph_3.pdf}
+\caption{Magnitude response of $V6$, $Vs$ and $Vc$ [dB]}
+\label{fig:sr_5_1}
+\end{figure}
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{phase.pdf}
+\caption{Angle response of $V6$, $Vs$ and $Vc$ [degrees]}
+\label{fig:sr_5_2}
+\end{figure}
+
+\subsection{Overall Results}
+
+Comparing the theoretical and simulated results, one notices the values are very similar and in line with what was expected. Small diferences were noticed due to the approximations made in the calculations using $Octave$ tool and $Ngspice$.
+
+Closely observing the differences between the simulated and theoretical results, the maximum relative error obtained in this assignment is a remarkably small value.
+
+We can observe these results side by side in the following tables and graphics to better understand if the results are similar or not.
+
+\begin{table}[h]
+	\centering
+	\begin{minipage}[t]{0.33\linewidth}
+	 	 \begin{tabular}[t]{|l|r|}
+	 	   \hline    
+	 	   {\bf Name} & {\bf Value [A or V]} \\ \hline
+	 	   \input{../mat/f1_tab}
+	 	 \end{tabular}
+	 	 \label{tab:ct1}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth}
+	  		\begin{tabular}[t]{|l|r|}
+	    	\hline    
+	   		{\bf Name} & {\bf Value [A or V]} \\ \hline
+	    	\input{../sim/t2_1_tab}
+	  		\end{tabular}
+	  	\label{tab:cs1}
+	\end{minipage}
+	  	\caption{Operating point for $t<0$ in Octave and NGSpice, respectivily. Names preceeded by "@" refer to current and values are measured in A.}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\begin{minipage}[t]{0.33\linewidth}
+	 	 \begin{tabular}[t]{|l|r|}
+	 	   \hline    
+	 	   {\bf Name} & {\bf Value [A or V]} \\ \hline
+	 	   \input{../mat/f2_tab}
+	 	 \end{tabular}
+	 	 \label{tab:ct2}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth}
+	  		\begin{tabular}[t]{|l|r|}
+	    	\hline    
+	   		{\bf Name} & {\bf Value [A or V]} \\ \hline
+	    	\input{../sim/t2_2_tab}
+	  		\end{tabular}
+	  	\label{tab:cs2}
+	\end{minipage}
+	  	\caption{Operating point for $t=0$ in Octave and NGSpice, respectivily. Names preceeded by "@" refer to current and values are measured in A.}
+\end{table}
+
+\vspace{10cm}

@@ -3,7 +3,8 @@
 # ---------------------------------------------------------
 
 #doc name
-FILE=report
+
+FILE=report2
 
 #list of LibreOffice Draw files
 LODFIGS = $(patsubst %.odg,%.pdf,$(wildcard *.odg))
@@ -12,7 +13,7 @@ all: $(FILE).pdf
 	evince $< &
 
 $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
-	cp -f ../mat/*.eps .
+	export TEXINPUTS=$(TEXINPUTS)
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex

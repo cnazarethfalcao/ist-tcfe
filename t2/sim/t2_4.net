@@ -1,0 +1,34 @@
+.options savecurrents
+
+
+.include ../mat/t2_4.txt
+
+
+.control
+
+
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=orange
+set color3=green
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+op
+
+echo "********************************************"
+echo  "Transient analysis"
+echo "********************************************"
+
+tran 1e-5 20e-3
+
+hardcopy graf_2.ps v(6) v(1)
+echo graf_2
+
+quit
+.endc
+
+.end
