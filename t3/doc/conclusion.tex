@@ -1,0 +1,31 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+\par To better understand the similarities and also what differs most in the results using the theoretical and simulated analysis, the tables with the important values are given side by side:
+
+
+\begin{table}[h]
+	\centering
+	\begin{minipage}[t]{0.33\linewidth}
+	 	 \begin{tabular}[t]{|l|r|}
+	 	   \hline    
+	 	   {\bf Name} & {\bf Value} \\ \hline
+	 	   \input{../mat/results}
+	 	 \end{tabular}
+	 	 \label{tab:rt2}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth}
+	  		\begin{tabular}[t]{|l|r|}
+	    	\hline    
+	   		{\bf Name} & {\bf Value} \\ \hline
+	    	\input{../sim/results_tab}
+	  		\end{tabular}
+	  	\label{tab:rs2}
+	\end{minipage}
+	  	\caption{Obtained results using Octave and NGSpice, respectivily.}
+\end{table}
+
+\par Taking a closer look at these values, one notices that there are some discrepancies. The deviation's value in the theoretical analysis is in the order of $10^-15$, while the simulated results are much bigger, in the order of $10^-5$ . The ripple differs a bit too from both analysis. These differences have a direct consequence in the value of the merit, since it depends on these quantities. One notices that the theoretical merit (16,44147) is almost ten times bigger than the simulated one (1,908548). These discrepancies were expected, since the diodes were considered to be ideal and many simplifications were made in the theoretical analysis, while the $Ngspice$ tool uses very complex models to simulate the results.
+\par As for the graphics of the voltage in the envelope detector, the output voltage and its deviation, both theoretical and simulated plots are coherent and very similar.
+\par Looking at the obtained results, one must conclude that the merit to take into consideration is the simulated one, since $Ngspice$ has the ability to produce values that are much more similar to reality.
+\par In conclusion, although there are some differences (that were expected), the objective of this lab assignment was accomplished and both methods (theoretical end simulated) were able to convert the AC voltage into the DC voltage asked by the teacher and the obtained values for the merit were also satisfactory.

@@ -1,0 +1,80 @@
+.option savecurrents
+	
+V2 N001 0 0 SIN(0 230 50 0 0 90) 
+R4 N003 0 80k
+C3 N003 0 0.000085
+R5 N004 N003 28.1k
+D19 N005 P001 D
+D20 P001 P002 D
+D21 P002 P003 D
+D22 P003 P004 D
+D49 P004 P005 D
+D50 P005 P006 D
+D51 P006 P007 D
+D52 P007 P008 D
+D53 P008 P009 D
+D54 P009 P010 D
+D55 P010 P011 D
+D56 P011 P012 D
+D57 P012 P013 D
+D58 P013 P014 D
+D59 P014 P015 D
+D60 P015 N007 D
+D62 0 N002 D
+D63 N002 N003 D
+D64 0 N006 D
+D65 N006 N003 D
+D66 N004 N005 D
+E1 N002 N006 N001 0 0.25
+D1 N007 0 D
+
+
+.model D D
+.end 
+.op
+	
+.control
+	
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+op
+
+echo "****************"
+echo  "Transient analysis"
+echo "****************"
+tran 1e-5 0.3 0.1
+
+meas trans avg AVG v(n004) from=100m to=300m
+meas trans vmin MIN v(n004) from=100m to=300m
+meas trans vmax MAX v(n004) from=100m to=300m
+
+let average = avg	
+let deviation = {abs(mean(v(n004))-12)}
+let ripple = {maximum(v(n004))-minimum(v(n004))}
+let cost = 80+28.1+85+2.2
+let merit = 1/(cost*((1e-6)+deviation+ripple))
+
+echo "results_TAB"
+print average deviation ripple cost merit
+echo "results_END"
+	
+hardcopy envelope.ps v(n003)
+echo envelope_FIG
+
+hardcopy vout.ps v(n004)
+echo vout_FIG
+
+hardcopy desvio.ps v(n004)-12
+echo desvio_FIG
+	
+	
+quit
+.endc
