@@ -39,7 +39,6 @@ RL out 0 8
 
 .control
 
-print all
 
 * time analysis
 tran 1e-5 1e-2
@@ -72,7 +71,10 @@ meas ac lcf WHEN vdb(out)=threshold RISE=1
 meas ac ucf WHEN vdb(out)=threshold CROSS=LAST
 
 *input impedance in kohm
-print v(in2)[40]/(v(in)[40]-v(in2)[40])/100*1000
+*print all
+
+plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
 
 *need a different setup to measure output impedance
 
