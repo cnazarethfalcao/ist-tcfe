@@ -3,7 +3,7 @@
 # ---------------------------------------------------------
 
 #doc name
-FILE=report
+FILE=report4
 
 #list of LibreOffice Draw files
 LODFIGS = $(patsubst %.odg,%.pdf,$(wildcard *.odg))
@@ -13,7 +13,6 @@ all: $(FILE).pdf
 
 $(FILE).pdf: $(wildcard *.tex) $(LODFIGS)
 	cp -f ../mat/*.eps .
-	cp -f ../sim/*.eps .
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
 	pdflatex  $(FILE).tex
@@ -28,5 +27,4 @@ clean:
 	@rm -rf *.log *.lot *.nlo *.nls *.out *.toc *~ *.*% ./*.pdf ./*.eps
 
 .PHONY: all clean
-
 

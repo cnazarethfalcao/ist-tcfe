@@ -1,0 +1,49 @@
+\section{Simulation Analysis}
+\label{sec:simulation}
+
+\par The following figures present the obtained results when simulating the circuit using $Ngspice$. The plots are the sime time functions as shown in the previous section.
+
+\par Starting with the obtained graphic for the voltage in the envelope detector, we have:
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{../sim/envelope.pdf}
+\caption{Output Voltage in the Envelope Detector[v].}
+\label{fig:venvelopes}
+\end{figure}
+
+\newpage
+
+\par Next, we have the results of the output voltage and its respective deviation.
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{../sim/vout.pdf}
+\caption{Output Voltage [V].}
+\label{fig:vouts}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{../sim/desvio.pdf}
+\caption{Deviation ($v_{out}$ - 12) [V].}
+\label{fig:deviations}
+\end{figure}
+
+\newpage
+
+
+\par Table\ref{tab:data_s} shows the important simulated results.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../sim/results_tab}
+  \end{tabular}
+  \caption{Simulated Results.}
+  \label{tab:data_s}
+\end{table}
+
+\newpage
+
