@@ -4,28 +4,27 @@
 \par To better understand the similarities and also what differs most in the results using the theoretical and simulated analysis, the tables with the important values are given side by side:
 
 
-\begin{table}[h]
-	\centering
-	\begin{minipage}[t]{0.33\linewidth}
-	 	 \begin{tabular}[t]{|l|r|}
-	 	   \hline    
-	 	   {\bf Name} & {\bf Value} \\ \hline
-	 	   \input{../mat/results}
-	 	 \end{tabular}
-	 	 \label{tab:rt2}
-	\end{minipage}
-	\begin{minipage}[t]{0.33\linewidth}
-	  		\begin{tabular}[t]{|l|r|}
-	    	\hline    
-	   		{\bf Name} & {\bf Value} \\ \hline
-	    	\input{../sim/results_tab}
-	  		\end{tabular}
-	  	\label{tab:rs2}
-	\end{minipage}
-	  	\caption{Obtained results using Octave and NGSpice, respectivily.}
+
+\begin{table}[ht]
+\parbox{.45\linewidth}{
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../mat/results_total}
+  \end{tabular}
+  \caption{Obtained results using Octave}} 
+\parbox{.45\linewidth}{
+ \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value} \\ \hline
+    \input{../sim/results_tab}
+  \end{tabular}
+  \caption{Obtained results using NGSpice}}
 \end{table}
 
-\par Taking a closer look at these values, one notices that there are some discrepancies. The deviation's value in the theoretical analysis is in the order of $10^-15$, while the simulated results are much bigger, in the order of $10^-5$ . The ripple differs a bit too from both analysis. These differences have a direct consequence in the value of the merit, since it depends on these quantities. One notices that the theoretical merit (16,44147) is almost ten times bigger than the simulated one (1,908548). These discrepancies were expected, since the diodes were considered to be ideal and many simplifications were made in the theoretical analysis, while the $Ngspice$ tool uses very complex models to simulate the results.
-\par As for the graphics of the voltage in the envelope detector, the output voltage and its deviation, both theoretical and simulated plots are coherent and very similar.
+\par Taking a closer look at these values, one notices that there are some discrepancies. These differences have a direct consequence in the value of the merit, since it depends on these quantities. One notices that the theoretical merit (9870.730) is almost nine times bigger than the simulated one (1594.629). These discrepancies were expected, since $Ngspice$ uses a very complex model for the transistors, while the theoretical results are obtained with many simplifications.
+\par The presented results lead to the conclusion that a good compromise was achieved. The values for the lower cut-off frequency and bandwidth are pretty similar to the range of frequencies that a human can hear. Altough these results were very good, it is seen that the gain of the audio amplifier doesn't have a big value in the Ngspice analysis(differences were expected in relation to Octave analysis since the models are very complex in the simulation tool). This leads us to conclude that the gain had to compromised in order to obtain a smaller cost and frequencies between the normal range, leading to a better merit. A bigger gain would lead to a bigger cost and possibly a smaller bandwidth so the values chosen for this lab assignment were the ones that produced better results.
 \par Looking at the obtained results, one must conclude that the merit to take into consideration is the simulated one, since $Ngspice$ has the ability to produce values that are much more similar to reality.
-\par In conclusion, although there are some differences (that were expected), the objective of this lab assignment was accomplished and both methods (theoretical end simulated) were able to convert the AC voltage into the DC voltage asked by the teacher and the obtained values for the merit were also satisfactory.
+\par In conclusion, although there are some differences (that were expected), the objective of this lab assignment was accomplished and both methods (theoretical end simulated) were able to amplify the input signal as asked by the teacher and the obtained values for the merit were very satisfactory.

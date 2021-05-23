@@ -1,129 +1,107 @@
 \section{Theoretical Analysis}
 \label{sec:analysis}
-\par The next subsections explain the theoretical analysis made to predict the voltage in both the envelope detector and voltage regulator. Table\ref{tab:dados} shows the important values used in the circuit.
+\par The next subsections explain the theoretical analysis made to predict the output voltages and impedances in both the Gain and Ouput stages, designed by the teacher previously to the lab.
 
+\subsection{Gain Stage}
 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{|l|r|}
-    \hline    
-    {\bf Name} & {\bf Value}\\ \hline
-    \input{../mat/data}
-  \end{tabular}
-  \caption{Chosen parameters.}
-  \label{tab:dados}
-\end{table}
-
-
-\par At first, a transformer with a ratio n:1 was used, leading to the following relation.
-
-\begin{equation}
-  A_{secondary} = \frac {A_{primary}{n}}.
-  \label{eq:transformer}
-\end{equation}
-
-\subsection{Envelope Detector}
-\par The input voltage in the envelope detector will be $V_secondary$, given by:
-
-\begin{equation}
-  V_{secondary} = A_{secondary}*cos(w*t).
-  \label{eq:transformer}
-\end{equation}
-
-With w = 2$\pi$f.
-
-\par Then, an envelope detector was produced, using a full-wave rectifier (four diodes and a resistor) and a capacitor, as seen in Figure\ref{fig:circuit}.
- The output voltage in the envelope detector will depend if the diodes are on or off. 
-\par When the diodes are on, assuming that the diodes are linear components, the voltage in the envelope is equal to the voltage if only a rectifier existed, which means that it will be equal to the abslotute value of $V_{secondary}$. 
-
-\begin{equation}
-  V_{envelope} = |V_{secondary}|.
-  \label{eq:veon}
-\end{equation}
-
-When the diodes are off the voltage in the envelope will be given by:
-
-\begin{equation}
-  V_{envelope} = A_{secondary}*|cos(w*t_{off})|e^(-\frac{t-t_{off}}{R_{envelope}*C}).
-  \label{eq:veoff}
-\end{equation}
-
-\par Because the voltage is given by a sinusoidal fuction that has a period, in this case, since we used a full bridge rectifier, the time between two consecutive $t_{off}$ will be T/2 and the same applies for $t_{on}$. This relation enabled us to determine the output voltage in the envelope detector.
-\par To determine $t_{off}$ we used the following expression:
-
-\begin{equation}
-  t_{off} = \frac{1}{w}*arctg(\frac{1}{w*R_{envelope}*C})
-  \label{eq:toff}
-\end{equation}
-
-\par The value of $t_{on}$ is the time were the curves of the rectified signal and the voltage in the envelope when the diodes are off intersect.
-
-\par Because the voltage is given by a sinusoidal fuction that has a period, in this case, since we used a full bridge rectifier, the time between two consecutive $t_{off}$ will be (T/2) and the same applies for $t_{on}$. This relation enabled us to determine the output voltage in the envelope detector for every value of $t$. The obtained results are shown in Figure\ref{fig:venvelope}.
-
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{envelope.eps}
-\caption{Output Voltage in the Envelope Detector[v].}
-\label{fig:venvelope}
-\end{figure}
-
-\newpage
-
-\subsection{Voltage Regulator}
-
-\par The voltage regulator used in this circuit consists in a resistor in series with a limiter circuit (positive voltage limiter) that uses a series of diodes with $n_{diodes}$. The objective of this part of the circuit is to achieve the required DC voltage of 12V as it was stated before.
-\par In order to predict the final result, an incremental analysis was used, which means that:
-
-\begin{equation}
-  V_{out} = V_{o} + v_{o}  
-  \label{eq:Vout}
-\end{equation}
-
-\par Since $V_{envelope}$ is greater than 12V, $V_{o} = V_{envelope}$. The incremental part is given by the following expression:
-
-\begin{equation}
-  v_{o} = \frac{n_{diodes}*r_{d}}{n_{diodes}*r_{d} + R_{vr}}*(V_{envelope} - avg(V_{envelope}))
-  \label{eq:vo}
-\end{equation}
-
-\par With,
-
-\begin{equation}
-  r_{d} = \frac{\eta *V_{T}}{I_{s}*e^(\frac{12}{n_{diodes}*\eta *V_{T}}})
-  \label{eq:rd}
-\end{equation}
-
-And $V_{T} = 0,025V$ (thermal voltage) , $I_{s} = 1*10^(-14)$ (reverse saturation current) and $\eta = 1$ (material constant).
-
-\par With the chosen parameters of Table\ref{tab:dados}, the obtained values and graphics are shown in the next figures.
-
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{vo.eps}
-\caption{Output Voltage [V].}
-\label{fig:vout}
-\end{figure}
-
-\newpage
-
-\begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{dev.eps}
-\caption{Deviation ($v_{out}$ - 12) [V].}
-\label{fig:deviation}
-\end{figure}
-
-
-\par Finally, the important obtained results are shown in the following table:
+Table\ref{tab:dadosg} shows the important values used in the circuit for the gain stage.
 
 \begin{table}[h]
   \centering
   \begin{tabular}{|l|r|}
     \hline    
     {\bf Name} & {\bf Value}\\ \hline
-    \input{../mat/results}
+    \input{../mat/data_gain}
   \end{tabular}
-  \caption{Theoretical Results.}
-  \label{tab:tr}
+  \caption{Gain Stage - Parameters.}
+  \label{tab:dadosg}
 \end{table}
+
+\par The Gain stage circuit containes a coupling capacitor that works as a DC block, separating the DC component of the base of the transistor and the DC component of the input (which is approximately zero). This capacitor blocks some low frequencies. A transistor and resistances were used and also a bypass capacitor. While stabilizing the temperature, resistance $R_{E}$ lowers the gain so it was necessary to improve it. To do so, this capacitor was used, with the objective of bypassing $R_{E}$ in order to improve the gain at medium frequencies. This capacitor works as an open-circuit for low frequencies(DC) and as short-circuit for medium frequencies(AC).
+
+\par First, an operating point analysis was made using the DC model. With the mesh analysis the needed voltages and currents were determined. It also allowed to confrm if the transistor was forwardly biased.
+
+\par Then, an incremental analysis was made in order to determine the impedances and the incremental circuit gain.
+
+\par The obtained results are given in Table\ref{tab:gr}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../mat/results_gain}
+  \end{tabular}
+  \caption{Gain Stage - Results.}
+  \label{tab:gr}
+\end{table}
+
+
+\par Taking a closer look at the results given by the Table, one sees that the output impedance of the gain stage has a big value so the circuit cannot be connected to an $8 Ohm$ load. This is the reason why an output stage is necessary.
 
 \newpage
 
+\subsection{Output Stage}
+\par As previously refered, the output stage is needed to provide a low impedance to the load. The chosen parameters for this circuit are shown in Table\ref{tab:dadoso}.
 
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../mat/data_output}
+  \end{tabular}
+  \caption{Output Stage - Parameters.}
+  \label{tab:dadoso}
+\end{table}
+
+
+\par Similar to before, operating point and incremental analysis were produced to obtain the output impedance and gain (which was supposed to be near one).
+
+\par The obtained results are shown in Table\ref{tab:or}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../mat/results_output}
+  \end{tabular}
+  \caption{Output Stage - Results.}
+  \label{tab:or}
+\end{table}
+
+\par As one can see in the results, the gain for the output stage is nearly one, which was the objetive and the output impedance is very small, making it perfect to connect to the load.
+
+\newpage
+
+\subsection{Total Results}
+
+\par In this lab assignement, it was also required to analyse the frequency response of the gain and compute into a graphic. This analysis is shown in Figure\ref{fig:freqresp}.
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{freqgain.eps}
+\caption{Frequency response of the gain .}
+\label{fig:freqresp}
+\end{figure}
+
+
+\par Considering the total circuit, the results obtained for the most important quantities are shown in Table\ref{tab:totalrmat}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../mat/results_total}
+  \end{tabular}
+  \caption{Total Circuit - Results.}
+  \label{tab:totalrmat}
+\end{table}
+
+
+\par Observing these results, one can see that the two stages can be connected without significant signal loss because the output impedance of the gain stage is much smaller than the input impedance of the output stage and the values are quite compatible.
+
+\par Looking at the values for the output impedance of the circuit, one notices that its value is small and good to connect to the $8 Ohm$ load.
+
+\newpage

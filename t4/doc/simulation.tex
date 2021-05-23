@@ -1,38 +1,72 @@
 \section{Simulation Analysis}
 \label{sec:simulation}
 
-\par The following figures present the obtained results when simulating the circuit using $Ngspice$. The plots are the sime time functions as shown in the previous section.
+\par A simulation analysis was produced in order to better predict the behaviour of the circuit.
 
-\par Starting with the obtained graphic for the voltage in the envelope detector, we have:
+\par Starting with the obtained graphic for the output voltage in the gain stage as a function of time, we have:
 
 \begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/envelope.pdf}
-\caption{Output Voltage in the Envelope Detector[v].}
-\label{fig:venvelopes}
+\includegraphics[width=0.6\linewidth]{../sim/vo1.pdf}
+\caption{Output Voltage in the Gain Stage[v].}
+\label{fig:vgain}
+\end{figure}
+
+\par One can see that there is no visible distortion on the sinusoidal signal.
+
+\newpage
+
+\par Figures \ref{fig:freqvg} and \ref{fig:freqvo} show the frequency response of the output voltage in the gain stage and output stage, respectively.
+
+
+\begin{figure}[h] \centering
+\includegraphics[width=0.6\linewidth]{../sim/vo1f.pdf}
+\caption{Frequency response: Output Voltage in the Gain Stage..}
+\label{fig:freqvg}
 \end{figure}
 
 \newpage
 
-\par Next, we have the results of the output voltage and its respective deviation.
-
 \begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/vout.pdf}
-\caption{Output Voltage [V].}
-\label{fig:vouts}
+\includegraphics[width=0.6\linewidth]{../sim/vo2f.pdf}
+\caption{Frequency response: Output Voltage in the Output Stage.}
+\label{fig:freqvo}
 \end{figure}
 
 \newpage
 
+\par The following graphic shows the frequency response of the gain produced by the circuit.
+
 \begin{figure}[h] \centering
-\includegraphics[width=0.6\linewidth]{../sim/desvio.pdf}
-\caption{Deviation ($v_{out}$ - 12) [V].}
-\label{fig:deviations}
+\includegraphics[width=0.6\linewidth]{../sim/gain.pdf}
+\caption{Frequency response: Gain.}
+\label{fig:freqgain}
 \end{figure}
 
 \newpage
 
+\par Finally, the values for the most important quantities were simulated, resulting in the next tables:
 
-\par Table\ref{tab:data_s} shows the important simulated results.
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+   \input{../sim/Zin_tab}
+   \end{tabular}
+  \caption{Input Impedance.}
+    \label{tab:zin}
+\end{table}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|l|r|}
+    \hline    
+    {\bf Name} & {\bf Value}\\ \hline
+    \input{../sim/zout_tab}
+  \end{tabular}
+  \caption{Output Impedance.}
+  \label{tab:zout}
+\end{table}
+
 
 \begin{table}[h]
   \centering
@@ -42,7 +76,7 @@
     \input{../sim/results_tab}
   \end{tabular}
   \caption{Simulated Results.}
-  \label{tab:data_s}
+  \label{tab:finalr}
 \end{table}
 
 \newpage

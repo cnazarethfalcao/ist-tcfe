@@ -1,0 +1,24 @@
+.options savecurrents
+
+.include out_imp.cir
+
+.op
+.end
+
+.control
+.op
+
+*output impedance in ohm
+ac dec 10 10 100MEG
+let ZRe_out= Re(-v(out)[40]/ vout#branch[40])
+let Zim_out= Im(-v(out)[40]/ vout#branch[40])
+
+echo "zout_TAB"
+echo "Zout = $&ZRe_out + $&Zim_out j"
+echo "zout_END"
+
+
+quit
+
+.endc
+
