@@ -29,8 +29,13 @@ Rout emit2 vcc 200
 * output coupling capacitor
 Co emit2 out 200u
 
+<<<<<<< HEAD:t4/sim/out_imp.cir
 *short circuit
 Vin in 0 0
+=======
+plot abs(v(in2)/vin#branch/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
+>>>>>>> 31f3d34ee65ee29d194f0b14957a4dc922b4092f:t4/t4.net
 
 *to measure the current
 Fteste dummy1 dummy0 Vout 1

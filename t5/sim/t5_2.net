@@ -49,41 +49,63 @@
 
 .options savecurrents
 
-Vcc vcc 0 5.0
-Vee vee 0 -5.0
-Vin in 0 0 ac 1.0 sin(0 10m 1k)
+Vcc vcc 0 10.0
+Vee vee 0 -10.0
 
-X1 0 inv_in vcc vee out uA741
+X1 3 2 vcc vee 4 uA741
 
-R1 in inv_in 1000
-R2 inv_in out 10000
+
+C1 0 3 220n
+
+R1 3 0 1k
+
+****
+R3 5 4 100k
+
+R5 2 5 100k
+
+R6 2 5 100k
+****
+
+R4 2 0 1k
+
+R2 4 out 1k
+
+C2 out 0 110n
+
 
 * load
-RL out 0 8
+Vl out 0 0 ac 1.0 sin(0 1.0 1k)
 
 .op
 .end
 
 .control
 
-print all
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
 
-* time analysis
-tran 1e-5 1e-2
-plot v(out)
-hardcopy vo1.ps v(out)
-
-
-* frequency analysis
 ac dec 10 10 100MEG
-plot vdb(out)
-plot vp(out)
-hardcopy vo1f.ps vdb(out)
 
-*input impedance in kohm
-*print v(in)[40]/R1[i]/1000
 
-*need a different setup to measure output impedance
 
+let Zout= -v(out)[20]/Vl#branch[20]
+
+
+
+echo "zout_TAB"
+echo "Zout = $&Zout"
+echo "zout_END"
+
+
+
+
+quit
 .endc 
-
